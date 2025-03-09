@@ -18,5 +18,8 @@ void main() async {
   // );
 
   // MARK: - ANIMATION
+  // runApp(const AnimationExampleApp());
+
+  // MARK: - ASYNC
   runApp(const AsyncExampleApp());
 }
