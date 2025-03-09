@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_example_test/todo/models/todo_model.dart';
 import 'package:flutter_example_test/todo/providers/todo_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +29,10 @@ class _TodoAddDialogState extends State<TodoAddDialog> {
         ),
         TextButton(
           onPressed: () {
-            context.read<TodosProvider>().addTodo(titleController.text);
+            context.read<TodosProvider>().addTodo(Todo(
+                  id: DateTime.now().toString(),
+                  title: titleController.text,
+                ));
             Navigator.of(context).pop();
           },
           child: const Text('추가'),
