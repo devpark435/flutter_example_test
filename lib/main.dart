@@ -5,6 +5,7 @@ import 'package:flutter_example_test/response_layout/response_grid.dart';
 import 'package:flutter_example_test/timer/timer_example.dart';
 import 'package:flutter_example_test/todo/providers/todo_provider.dart';
 import 'package:flutter_example_test/todo/todo.dart';
+import 'package:flutter_example_test/todotest/todotest.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -29,5 +30,13 @@ void main() async {
   // runApp(const ResponseGridApp());
 
   // MARK: - TIMER
-  runApp(const TimerApp());
+  // runApp(const TimerApp());
+
+  // MARK: - TODOTEST
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => TodoProvider(),
+      child: const TodotestApp(),
+    ),
+  );
 }
