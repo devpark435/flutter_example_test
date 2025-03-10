@@ -12,7 +12,7 @@ class ResponseGridApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const ResponseGrid(),
+      home: const SwitchGrid(),
     );
   }
 }
@@ -78,5 +78,58 @@ class OperationGrid extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class SwitchGrid extends StatefulWidget {
+  const SwitchGrid({super.key});
+
+  @override
+  State<SwitchGrid> createState() => _SwitchGridState();
+}
+
+class _SwitchGridState extends State<SwitchGrid> {
+  bool _isGrid = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('갤러리'),
+        actions: [
+          Switch(
+            value: _isGrid,
+            onChanged: (value) {
+              setState(() {
+                _isGrid = value;
+              });
+            },
+          ),
+        ],
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: _isGrid ? 3 : 2,
+          childAspectRatio: 2 / 3,
+        ),
+        itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              child: Container(
+                color: Colors.blue,
+                child: Text('Item $index'),
+              ),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('알림'),
+                    content: Text('아이템 $index를 선택하셨습니다.'),
+                  ),
+                );
+              },
+            )),
+      ),
+    );
   }
 }
