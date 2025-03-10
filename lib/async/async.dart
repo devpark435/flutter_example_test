@@ -60,6 +60,12 @@ class AsyncExampleState extends State<AsyncExample> {
               itemCount: items.length,
               itemBuilder: (context, index) => ListTile(
                 title: Text(items[index]),
+                onTap: () {
+                  print('Item $index tapped');
+                },
+                onLongPress: () {
+                  print('Item $index long pressed');
+                },
               ),
             ),
     );
